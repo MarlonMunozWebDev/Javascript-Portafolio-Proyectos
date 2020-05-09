@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 6rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>AGENDA TELEFONICA</title>
+
+    </style>
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Agenda Telefonica</h5>
+                  <p class="card-text">Ingresa el nombre de la Persona</p>
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" placeholder="Mario o Pedro">
+                  </div>
+
+                  <a href="#" class="btn btn-primary">Iniciar</a>
+                </div>
+
+
+                <hr>
+                <h5 class="card-title p-4">Resultado</h5>
+                <ul class="m-1"></ul>
+              </div>
+        </div>
+    </div>
+
+    <script>
+    var input = document.querySelector('.contenido input');
+    var boton = document.querySelector('.contenido a')
+    var parrafo = document.querySelector('.contenido ul');
+
+    let contactos = ['MARIO LOPEZ HERNANDEZ - 55 4565 7864',
+        'PEDRO GARCIA GOMEZ - 55 3456 9633',
+        'PEDRO ALTIMIRA SANCHEZ - 55 4233 6421',
+        'MARIO URBINA ORTEGA- 55 6731 8954',
+        'MARIO MARTINEZ FLORES- 55 3245 4523'];
+    
+    boton.addEventListener('click', function(){
+        contactoBuscado = input.value;
+        contactoBuscado = contactoBuscado.toUpperCase();
+
+    for (i = 0; i < contactos.length; i++) {
+        let input = contactos[i];
+
+        if (input.indexOf(contactoBuscado) !== -1) {
+            let resultado = input;
+
+            let elementoNuevo = document.createElement('li');
+            elementoNuevo.textContent = resultado;
+            parrafo.appendChild(elementoNuevo);
+        }
+    }
+    })
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 1rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Filtrando datos de un Array con Objetos</h5>
+                  <p class="card-text">Agencia de Carros</p>
+                  
+                </div>
+
+                <hr>
+                <h5 class="card-title p-4">Informacion Pedida</h5>
+                <p class="busqueda"></p>
+                <p class="total"></p>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        var parrafo = document.querySelector('.contenido .busqueda');
+        var totalCarros = document.querySelector('.contenido .total')
+
+         const carros = [
+            {carro: 'Versa', precio: 180000},
+            {carro: 'Ibiza', precio: 100000},
+            {carro: 'Sentra', precio: 140000, aprendiendo: 'Javascript'},
+            {carro: 'Focus', precio: 230000},
+            {carro: 'Mazda', precio: 250000}   
+        ];
+
+        const masCaro = carros.filter(carro => carro.precio > 170000);
+
+        parrafo.innerHTML = `Estos son los carros mas caros de la Agencia: <br> ${masCaro[0].carro} <br> ${masCaro[1].carro} <br> ${masCaro[2].carro}`;
+
+            let total = carros.reduce( (cantidadTotal, carro) => {
+                return cantidadTotal + carro.precio;
+            }, 0);
+
+            totalCarros.innerHTML = `Total de Carros en la Agencia: <br> ${total}`;
+
+            
+    </script>
+</body>
+</html>

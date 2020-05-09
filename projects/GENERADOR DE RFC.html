@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 4rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>RFC GENERADOR</title>
+
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Generador de RFC</h5>
+                  <p class="card-text">Ingresa tu informacion para conocer tu RFC</p>
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control nombre" aria-label="Username" aria-describedby="basic-addon1" placeholder="Nombres">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control apellidoPaterno" aria-label="Username" aria-describedby="basic-addon1" placeholder="Apellido Paterno">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control apellidoMaterno" aria-label="Username" aria-describedby="basic-addon1" placeholder="Apellido Materno">
+                  </div>
+
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control anoNacimiento" aria-label="Username" aria-describedby="basic-addon1" placeholder="AñoMesDia : 960309">
+                  </div>
+
+                  <a href="#" class="btn btn-primary">Consultar</a>
+                </div>
+
+                <hr>
+                <h5 class="card-title p-4">Este es tu RFC Oficial</h5>
+                <p class="curp p-4"></p>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        var primerNombre = document.querySelector('.contenido .nombre');
+
+        var apellidoMaterno = document.querySelector('.contenido .apellidoMaterno');
+        var apellidoPaterno = document.querySelector('.contenido .apellidoPaterno');
+
+        var anoNacimiento = document.querySelector('.contenido .anoNacimiento');
+
+        var boton = document.querySelector('.contenido a');
+        var parrafo = document.querySelector('.contenido .curp');
+
+
+        boton.addEventListener('click', function(){
+            var inputNombre = primerNombre.value;
+            var inputApellidoMaterno = apellidoMaterno.value;
+            var inputApellidoPaterno = apellidoPaterno.value;
+            inputApellidoPaterno = inputApellidoPaterno.toUpperCase();
+            var inputAnoNacimiento = Number(anoNacimiento.value);
+
+            inputNombre.length;
+            inputApellidoMaterno.length;
+            inputApellidoPaterno.length;
+
+            letraPrimerNombre = inputNombre[0];
+            letraApellidoPaternoPrimera = inputApellidoPaterno[0];
+            letraApellidoPaternoSegunda = inputApellidoPaterno[1];
+            letraApellidoMaterno = inputApellidoMaterno[0];
+
+
+            var curp = letraApellidoPaternoPrimera + letraApellidoPaternoSegunda + letraApellidoMaterno + letraPrimerNombre + inputAnoNacimiento;
+
+            parrafo.textContent = curp;
+        })
+         
+    </script>
+</body>
+</html>

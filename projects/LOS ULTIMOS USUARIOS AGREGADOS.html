@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 7rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>ULTIMOS USUARIOS REGISTRADOS</title>
+
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Filtrando los Datos de Array</h5>
+                  <p class="card-text">Ingresa un Nuevo Usuario</p>
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1" placeholder="Nombre">
+                  </div>
+
+                  <button class="btn btn-primary agregar">Agregar Usuario</button>
+
+                <hr>
+                <h5 class="card-title p-4">Ultimos Usuarios Agregados</h5>
+                <ul></ul>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        var lista = document.querySelector('.contenido ul');
+        var buscarInput  = document.querySelector('.contenido input');
+        var boton = document.querySelector('.contenido button');
+
+        lista.innerHTML = '';
+        var productos = ['Juan Lopez Galindo', 'Maria Urbina Snachez', 'Pedro Alvarez Martinez', 'Mateo Alfonso Gomez', 'Pilar Rivera Ordoñez'];
+
+        //FUNCION CLICK - BOTON
+        boton.onclick = function() {
+
+            //SI HAY UN VALOR EN EL INPUT
+            if(buscarInput.value !== '') {
+                //EN PRODUCTOS AGREGA AL PRINCIPIO EL VALOR DEL INPUT
+                productos.unshift(buscarInput.value);
+                lista.innerHTML  = '';
+
+                //RECORRIENDO EL ARREGLO Y GUARDANDOLO EN UNA VARIABLE
+                for(var i = 0 ; i < productos.length; i++){
+                    itemTexto = productos[i];
+
+                    //MANDAR EL RESULTADO AL DOM
+                    var listaItem = document.createElement('li');
+                    listaItem.textContent = itemTexto;
+                    lista.appendChild(listaItem);
+                }
+
+                //SI EL NUMERO DE PRODUCTOS ES IGUAL A 5 ELIMINA EL MAS ANTIGUO
+                //EN ESTE CASO EL PRIMERO EN EL ARREGLO
+                if(productos.length >= 5) {
+                    productos.pop();
+                }
+
+                buscarInput.value = '';
+                buscarInput.focus();
+            }
+        }
+         
+    </script>
+</body>
+</html>

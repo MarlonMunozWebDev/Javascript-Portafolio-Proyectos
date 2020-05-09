@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 1rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Obteniendo datos de una web externa API</h5>
+                  <p class="card-text">Usuarios de la Base de Datos</p>
+                  
+                </div>
+
+                <hr>
+                <h5 class="card-title p-4">Informacion Usuario</h5>
+                <ul class="usuarios"></ul>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        descargarDatos(8);
+
+        function descargarDatos(cantidad) {
+            const api = `https://api.randomuser.me/?nat=US&results=${cantidad}`;
+
+            fetch(api)
+                .then(respuesta => respuesta.json( ) )
+                .then(datos => imprimirHTML( datos.results));
+
+        }
+
+        function imprimirHTML(datos) {
+            datos.forEach( usuario => {
+                console.log(usuario);
+                const li = document.createElement('li');
+                const { name: {first}, name: {last}, picture: {thumbnail}, nat} = usuario;
+
+                li.innerHTML = `<img src="${thumbnail}">
+                                Nombre: ${first} ${last} -
+                                Pais: ${nat}`;
+
+                document.querySelector('.usuarios').appendChild(li);
+            })
+        }
+         
+    </script>
+</body>
+</html>

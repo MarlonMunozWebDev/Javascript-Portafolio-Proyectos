@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 4rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>DECODICADOR DE CODIGO DE BARRAS</title>
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Decifrador de Codigo de Barras</h5>
+                  <p class="card-text">Ingresa el codigo sin espacios para que sea decodificado.</p>
+                  
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1"></span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+
+                  <a href="#" class="btn btn-primary">Iniciar</a>
+                </div>
+
+                <p class="card-text">Estructura - Ingrese este ejemplo.</p>
+                  <img class="estructura" src="estructura.jpg" alt="">
+
+
+                <hr>
+                <h5 class="card-title p-4">Codigos Decifrados</h5>
+                <ul></ul>
+              </div>
+        </div>
+    </div>
+
+    <script>
+    var ubicacion = document.querySelector('.contenido ul');
+    let input = document.querySelector('.contenido input');
+    let boton = document.querySelector('.contenido a')
+
+    //let codigos = '77007283 837325';
+
+
+        boton.onclick = function (){
+        codigos = input.value;
+        console.log(codigos);
+        
+        let pais = codigos.slice(0,3);
+        let codigoEmpresa = codigos.slice(3,7);
+        let codigoProducto =  codigos.slice(7,12);
+        let digitoControl = codigos.slice(12);
+
+        let decifrado = `Pais: ${pais} - Codigo de la Empresa: ${codigoEmpresa} - Codigo del Producto: ${codigoProducto} - Digito Control: ${digitoControl}`;
+
+
+        let codigoResultado = document.createElement('p');
+        codigoResultado.textContent = decifrado;
+        ubicacion.appendChild(codigoResultado);
+        };
+
+    
+         
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            padding: 7rem;
+        }
+
+        .card {
+            box-shadow: 10px 10px 5px grey;
+        }
+
+        .estructura {
+            height: 7rem;
+            width: 100%;
+        }
+    </style>
+    <title>MENU INFORMATIVO</title>
+
+</head>
+<body>
+    <div class="contenido d-flex justify-content-center">
+        <div class="p-2 align-items-center">
+            <div class="card p-3" style="width: 28rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Lenguajes de Programacion</h5>
+                  <p class="card-text">Se le conoce básicamente como un sistema estructurado de comunicación que nos permite comunicarnos, ya sea, a través de palabras, signos, sonidos o gestos con una computadora.</p>
+                  
+                  <select class="form-control" name="" id="modelo">
+                    <option value="javascript">Javascript</option>
+                    <option value="python">Python</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="csharp">C#</option>
+                </select>
+                </div>
+
+                <hr>
+                <h5 class="card-title p-4">Descripcion</h5>
+                <p class="info"></p>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        var select = document.querySelector('.contenido select');
+        var parrafo = document.querySelector('.contenido .info');
+
+        select.addEventListener('change', mostrarInformacion);
+
+        function mostrarInformacion (){
+            var modelo = select.value;
+
+            switch (modelo) {
+                case 'javascript':
+                parrafo.textContent = 'Es un lenguaje de programación que se utiliza principalmente para crear páginas web dinámicas. Una página web dinámica es aquella que incorpora efectos como texto que aparece y desaparece, animaciones, acciones que se activan al pulsar botones y ventanas con mensajes de aviso al usuario.';
+                break;
+
+                case 'python':
+                parrafo.textContent = 'Es un lenguaje de programación interpretado cuya filosofía hace hincapié en la legibilidad de su código.​ Se trata de un lenguaje de programación multiparadigma, ya que soporta orientación a objetos, programación imperativa y, en menor medida, programación funcional.';
+                break;
+
+                case 'ruby':
+                parrafo.textContent = ' Es un lenguaje de programación. Ante todo, se usa para crear webs. Es un lenguaje de alto nivel, es decir, su expresión está adaptada a la capacidad cognitiva humana, en lugar de la capacidad ejecutora de las máquinas. Rails es un entorno de trabajo';
+                break;
+
+                case 'csharp':
+                parrafo.textContent = 'Es un lenguaje de programación multiparadigma desarrollado y estandarizado por Microsoft como parte de su plataforma. Es uno de los lenguajes de programación diseñados para la infraestructura de lenguaje común. ';
+                break;
+
+                default: 
+                parrafo.textContent = '';
+            }
+        }
+         
+    </script>
+</body>
+</html>
